@@ -1,0 +1,87 @@
+
+html. body  {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height: 100%;
+}
+
+body {
+	background-color: #F4FAFF;
+	
+}
+/* Map Styles */
+#map-container {
+	position: absolute;
+	top: 0;
+	right: 0;
+	padding-left: .25em;
+	height: 100%;
+	width: 50%;
+	float: right;
+	background-color: #FFA62E;
+	border: 1px solid #FF9200;
+}
+
+#map {
+	height: 100%;
+	width: 100%%;
+}
+
+/* App Styles */
+#app {
+	margin-left: .5em;
+	width: 50%;
+	float: left;
+}
+
+#search-box {
+	margin-top: .5em;
+	margin-bottom: .5em;
+	vertical-align: middle;
+}
+
+#search-box input[type="text"] {
+	margin-top: .3em;
+	margin-left: .3em;
+	vertical-align: middle;
+	display: inline-block;
+	top: 1.5em;
+}
+
+#search-btn {
+	cursor: pointer;
+	float: right;
+	background-color: #FFA62E;
+	border-radius: 4px 4px 4px 4px;
+	border: 1px solid #FF9200;
+	width: 4em;
+	height: 2em;
+	text-align: center;
+	vertical-align: middle;
+}
+
+#search-box input[type="checkbox"] {
+	display: block;
+	margin-top: .5em;
+	margin-bottom: .5em;
+}
+
+#search-box label {
+	position: relative;
+	display: inline;
+	top: -1.25em;
+	right: -1.5em;
+}
+
+#vegan-box,
+#gf-box,
+#keyword-box {
+	width: 40%;
+	height: 2em;
+	background-color: #95D8E4;
+	border-radius: 4px 4px 4px 4px;
+	border: 1px solid #899E9E;
+	margin-top: .5em;
+	margin-bottom: .5em
+}
