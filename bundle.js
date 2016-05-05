@@ -23194,28 +23194,44 @@
 
 					service.getDetails(req, function (data) {
 						if (data !== null) {
-							newObj.name = data.name;
-							newObj.address = data.formatted_address;
-							newObj.phone = data.formatted_phone_number;
+							(function () {
+								newObj.name = data.name;
+								newObj.address = data.formatted_address;
+								newObj.phone = data.formatted_phone_number;
 
-							var myLatLng = new google.maps.LatLng(newObj.lat, newObj.lng);
+								var myLatLng = new google.maps.LatLng(newObj.lat, newObj.lng);
 
-							var marker = new google.maps.Marker({
-								position: myLatLng,
-								map: map,
-								title: newObj.name,
-								label: newObj.name,
-								animation: google.maps.Animation.DROP
-							});
+								var marker = new google.maps.Marker({
+									position: myLatLng,
+									map: map,
+									title: newObj.name,
+									label: newObj.name,
+									animation: google.maps.Animation.DROP
+								});
 
-							places.push(newObj);
+								var info = new google.maps.InfoWindow({
+									content: newObj.name + "\n" + "Address: " + "\n" + newObj.address + "\n" + "Phone: " + "\n" + newObj.phone
+								});
 
-							markers.push(marker);
+								marker.addListener("mouseover", function () {
+									console.log("Marker for ", newObj.name, " moused over!");
+									info.open(map, marker);
+								});
 
-							self.setState({
-								places: places,
-								markers: markers
-							});
+								marker.addListener("mouseout", function () {
+									console.log("Marker moused out");
+									info.close();
+								});
+
+								places.push(newObj);
+
+								markers.push(marker);
+
+								self.setState({
+									places: places,
+									markers: markers
+								});
+							})();
 						} else return null;
 					});
 				});
@@ -23252,11 +23268,11 @@
 						_react2.default.createElement(
 							"div",
 							{ id: "keyword-box" },
-							_react2.default.createElement("input", { id: "keyword-input", type: "text", defaultValue: "Search by keyword . . .", onChange: this.setKeyword.bind(this) }),
+							_react2.default.createElement("input", { id: "keyword-input", type: "text", placeholder: "Search . . .", onChange: this.setKeyword.bind(this) }),
 							_react2.default.createElement(
 								"div",
 								{ id: "search-btn", onClick: this.search.bind(this) },
-								"Search"
+								"Go"
 							)
 						)
 					),

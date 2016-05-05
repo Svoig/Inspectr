@@ -97,6 +97,23 @@ class Search extends React.Component {
 						animation: google.maps.Animation.DROP
 					});
 
+					const info = new google.maps.InfoWindow({
+						content: newObj.name + "\n" + "Address: " 
+						+ "\n" + newObj.address + "\n" +
+						"Phone: " + "\n" + newObj.phone
+					});
+							
+					marker.addListener("mouseover", function() {
+						console.log("Marker for ", newObj.name, " moused over!");
+						info.open(map, marker);
+
+					});
+
+					marker.addListener("mouseout", function() {
+						console.log("Marker moused out");
+						info.close();
+					});
+
 					places.push(newObj);
 
 					markers.push(marker);
@@ -133,8 +150,8 @@ class Search extends React.Component {
 					</div>
 
 					<div id="keyword-box">
-						<input id="keyword-input" type="text" defaultValue="Search by keyword . . ." onChange={this.setKeyword.bind(this)}></input>
-						<div id="search-btn" onClick={this.search.bind(this)}>Search</div>
+						<input id="keyword-input" type="text" placeholder="Search . . ." onChange={this.setKeyword.bind(this)}></input>
+						<div id="search-btn" onClick={this.search.bind(this)}>Go</div>
 					</div>
 
 				</div>
