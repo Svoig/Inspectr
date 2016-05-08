@@ -10,7 +10,8 @@ class Search extends React.Component {
 			vegan: false,
 			gf: false,
 			keyword: '',
-			results: []
+			results: [],
+			class: "uncollapsed"
 		}
 	}
 
@@ -42,6 +43,13 @@ class Search extends React.Component {
 				gf: false
 			});
 		}
+	}
+
+	handleKey(event) {
+		//If user hits enter, search
+		if (event.key == "Enter") {
+			this.search();
+		} else console.log("key was ", event.key);
 	}
 
 	search() {
@@ -150,8 +158,8 @@ class Search extends React.Component {
 					</div>
 
 					<div id="keyword-box">
-						<input id="keyword-input" type="text" placeholder="Search . . ." onChange={this.setKeyword.bind(this)}></input>
-						<div id="search-btn" onClick={this.search.bind(this)}>Go</div>
+						<input id="keyword-input" type="text" placeholder="Search . . ." onChange={this.setKeyword.bind(this)} onKeyUp={this.handleKey.bind(this)}></input>
+						<div id="search-btn" onClick={this.search.bind(this)} >Go</div>
 					</div>
 
 				</div>

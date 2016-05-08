@@ -3,15 +3,46 @@ import React from "react";
 class Restaurant extends React.Component {
 	constructor(props) {
 		super(props);
+
+		this.state = {
+			class: 'uncollpased',
+			arrow: ' glyphicon glyphicon-chevron-up'
+		};
 	}
 
+	toggleCollapse() {
+
+		if (this.state.class === "collapsed") {
+			this.setState({
+				class: "uncollpased",
+				arrow: "glyphicon glyphicon-chevron-up"
+			});
+		} else {
+			this.setState({
+				class: 'collapsed',
+				arrow: "glyphicon glyphicon-chevron-down"
+			});
+		}
+	}
 
 	render() {
 		return(
-			<div>
-				<h1>{this.props.name}</h1>
-				<h3>{this.props.address}</h3>
-				<p>{this.props.phone}</p>
+
+			<div className={this.state.class}>
+
+				<div className="top-bar">
+					<h1>
+						{this.props.name}
+						<i onClick={this.toggleCollapse.bind(this)} className={this.state.arrow}></i>
+					</h1> 
+					<hr></hr>
+				</div>
+
+				<div className="details">
+					<h3>{this.props.address}</h3>
+					<p>{this.props.phone}</p>
+				</div>
+
 			</div>
 		)
 	}

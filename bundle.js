@@ -23031,29 +23031,61 @@
 		function Restaurant(props) {
 			_classCallCheck(this, Restaurant);
 
-			return _possibleConstructorReturn(this, Object.getPrototypeOf(Restaurant).call(this, props));
+			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Restaurant).call(this, props));
+
+			_this.state = {
+				class: 'uncollpased',
+				arrow: ' glyphicon glyphicon-chevron-up'
+			};
+			return _this;
 		}
 
 		_createClass(Restaurant, [{
+			key: 'toggleCollapse',
+			value: function toggleCollapse() {
+
+				if (this.state.class === "collapsed") {
+					this.setState({
+						class: "uncollpased",
+						arrow: "glyphicon glyphicon-chevron-up"
+					});
+				} else {
+					this.setState({
+						class: 'collapsed',
+						arrow: "glyphicon glyphicon-chevron-down"
+					});
+				}
+			}
+		}, {
 			key: 'render',
 			value: function render() {
 				return _react2.default.createElement(
 					'div',
-					null,
+					{ className: this.state.class },
 					_react2.default.createElement(
-						'h1',
-						null,
-						this.props.name
+						'div',
+						{ className: 'top-bar' },
+						_react2.default.createElement(
+							'h1',
+							null,
+							this.props.name,
+							_react2.default.createElement('i', { onClick: this.toggleCollapse.bind(this), className: this.state.arrow })
+						),
+						_react2.default.createElement('hr', null)
 					),
 					_react2.default.createElement(
-						'h3',
-						null,
-						this.props.address
-					),
-					_react2.default.createElement(
-						'p',
-						null,
-						this.props.phone
+						'div',
+						{ className: 'details' },
+						_react2.default.createElement(
+							'h3',
+							null,
+							this.props.address
+						),
+						_react2.default.createElement(
+							'p',
+							null,
+							this.props.phone
+						)
 					)
 				);
 			}
@@ -23114,7 +23146,8 @@
 				vegan: false,
 				gf: false,
 				keyword: '',
-				results: []
+				results: [],
+				class: "uncollapsed"
 			};
 			return _this;
 		}
@@ -23151,6 +23184,14 @@
 						gf: false
 					});
 				}
+			}
+		}, {
+			key: "handleKey",
+			value: function handleKey(event) {
+				//If user hits enter, search
+				if (event.key == "Enter") {
+					this.search();
+				} else console.log("key was ", event.key);
 			}
 		}, {
 			key: "search",
@@ -23268,7 +23309,7 @@
 						_react2.default.createElement(
 							"div",
 							{ id: "keyword-box" },
-							_react2.default.createElement("input", { id: "keyword-input", type: "text", placeholder: "Search . . .", onChange: this.setKeyword.bind(this) }),
+							_react2.default.createElement("input", { id: "keyword-input", type: "text", placeholder: "Search . . .", onChange: this.setKeyword.bind(this), onKeyUp: this.handleKey.bind(this) }),
 							_react2.default.createElement(
 								"div",
 								{ id: "search-btn", onClick: this.search.bind(this) },

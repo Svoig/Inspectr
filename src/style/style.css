@@ -70,10 +70,16 @@ input[type="text"].focus {
   box-shadow: inset 1px 1px 2px 0 #c9c9c9;
 }
 
+#keyword-box {
+	position: fixed;
+	height: 3em;
+	min-width: 10em;
+}
+
 #search-btn {
 	display: inline-block;
 	width: 2em;
-	height: 2em;
+	height: 100%;
 	margin: .5em .5em .5em .5em;
 	border-radius: 4px 4px 4px 4px;
 	color: #333;
@@ -82,7 +88,8 @@ input[type="text"].focus {
 	border: none;
 	cursor: pointer;
 	text-align: center;
-	font-size: 1em;
+	vertical-align: middle;
+	font-size: 1.75em;
 }
 
 #search-btn:hover,
@@ -95,4 +102,57 @@ input[type="text"].focus {
 #search-btn.active {
 	background-color: #27496d;
 	text-shadow: -1px 1px #193047;
+}
+
+#list::before {
+	content: "Results: ";
+	padding-top: 5.25em;
+	font-size: 3em;
+	font-weight: bold;
+	font-family: sans-serif;
+}
+
+#list {
+	padding-top: 3em;
+}
+
+#list h1 {
+	font-size: 1em;
+	font-weight: bold;
+}
+
+#list h2 {
+	font-size: 0.5em;
+}
+
+#list h3 {
+	font-size: 1em;
+}
+
+.uncollapsed {
+	opacity: 1;
+	background-color: red;
+}
+
+.collapsed .details {
+	display: none;
+}
+
+.top-bar {
+	opacity: 1;
+	width: 100%;
+	display: inline;
+}
+
+.top-bar h1 {
+	clear: right;
+}
+
+.top-bar i {
+	margin-left: .5em;
+}
+
+.top-bar hr {
+	font-weight: bold;
+	color: #fff;
 }
