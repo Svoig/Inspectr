@@ -55,6 +55,10 @@ input[type="text"]:focus {
 	width: 25%;
 }
 
+#search-box hr {
+	width: 100%;
+}
+
 input[type="text"] {
 	display: inline;
   width: 70%;
@@ -71,9 +75,11 @@ input[type="text"].focus {
 }
 
 #keyword-box {
-	position: fixed;
+	position: absolute;
 	height: 3em;
 	min-width: 10em;
+	top: 4.5em;
+	left: 8em;
 }
 
 #search-btn {
@@ -106,14 +112,13 @@ input[type="text"].focus {
 
 #list::before {
 	content: "Results: ";
-	padding-top: 5.25em;
 	font-size: 3em;
-	font-weight: bold;
 	font-family: sans-serif;
 }
 
 #list {
-	padding-top: 3em;
+	padding-top: 1em;
+	height: 100px;
 }
 
 #list h1 {
