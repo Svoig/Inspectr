@@ -23315,7 +23315,8 @@
 								{ id: "search-btn", onClick: this.search.bind(this) },
 								"Go"
 							)
-						)
+						),
+						_react2.default.createElement("hr", null)
 					),
 					_react2.default.createElement(_List2.default, { places: this.state.places })
 				);

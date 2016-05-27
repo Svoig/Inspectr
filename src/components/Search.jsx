@@ -162,8 +162,8 @@ class Search extends React.Component {
 						<div id="search-btn" onClick={this.search.bind(this)} >Go</div>
 					</div>
 
+					<hr></hr>
 				</div>
-
 				<List places={this.state.places} />
 
 			</div>
